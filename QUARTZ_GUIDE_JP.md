@@ -1,6 +1,7 @@
 # Quartz カスタマイズ & 移行ガイド
 
 ## 1. プロジェクトの移行 (GitHubから切り離す)
+
 このプロジェクトを `/Users/kino/Projects/site_maker` にコピーし、GitHubの管理下から外して「実験用」にするには、以下の手順をターミナルで実行してください。
 
 ```bash
@@ -26,6 +27,7 @@ code .
 Quartzのデザインはいくつかの場所に分かれています。
 
 ### CSS (スタイルシート)
+
 見た目や色、フォントなどを変更したい場合。
 
 - **場所**: `quartz/styles/custom.scss`
@@ -33,15 +35,17 @@ Quartzのデザインはいくつかの場所に分かれています。
 - **設定**: 色のテーマ（Light/Dark mode）やフォント設定は `quartz.config.ts` で一括管理されています。
 
 ### HTML (構造・コンポーネント)
+
 ヘッダー、フッター、記事のタイトル周りなど、ページの構造を変えたい場合。
 Quartzは生のHTMLではなく、**TSX (Reactコンポーネント)** を使用しています。
 
 - **場所**: `quartz/components/`
-    - 例: `PageTitle.tsx` (サイトタイトル), `Footer.tsx` (フッター), `ArticleTitle.tsx` (記事タイトル)
+  - 例: `PageTitle.tsx` (サイトタイトル), `Footer.tsx` (フッター), `ArticleTitle.tsx` (記事タイトル)
 - **使い方**: これらのファイルを直接編集して、HTML構造や表示ロジックを変更します。
-    - ※ `.tsx` ファイルですが、基本的には `<div class="...">...</div>` のようにHTMLライクに書けます。
+  - ※ `.tsx` ファイルですが、基本的には `<div class="...">...</div>` のようにHTMLライクに書けます。
 
 ### レイアウト設定 (配置)
+
 どのページにどのコンポーネント（サイドバー、目次など）を表示するかを決める設定。
 
 - **場所**: `quartz.layout.ts`
@@ -56,4 +60,5 @@ Quartzは生のHTMLではなく、**TSX (Reactコンポーネント)** を使用
 ```bash
 npx quartz build --serve
 ```
+
 または、VS Codeの「NPM SCRIPTS」から `serve` を実行してください。

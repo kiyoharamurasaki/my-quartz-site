@@ -1,0 +1,63 @@
+// ⋮ Sidebar Toggle Button
+// Positioned fixed on the right edge of the viewport.
+// Hidden on the index page (pinned note shows graph inline).
+
+.sidebar-toggle-container {
+  position: fixed;
+  right: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 200;
+}
+
+.sidebar-toggle {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+  width: 28px;
+  height: 52px;
+  background: var(--lightgray);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-right: none;
+  border-radius: 8px 0 0 8px;
+  cursor: pointer;
+  padding: 0;
+  transition: all 0.25s ease;
+  box-shadow: -2px 0 8px rgba(0, 0, 0, 0.15);
+
+  &:hover {
+    background: var(--highlight);
+    border-color: var(--secondary);
+    box-shadow: -2px 0 12px rgba(187, 134, 252, 0.2);
+
+    .dot {
+      background: var(--secondary);
+    }
+  }
+
+  &.active {
+    background: var(--secondary);
+    border-color: var(--secondary);
+
+    .dot {
+      background: var(--light);
+    }
+  }
+}
+
+.dot {
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  background: var(--gray);
+  transition: all 0.2s ease;
+}
+
+// Hide on index page
+body[data-slug="index"] {
+  .sidebar-toggle-container {
+    display: none;
+  }
+}

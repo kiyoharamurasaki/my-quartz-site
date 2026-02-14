@@ -586,6 +586,65 @@ document.addEventListener("nav", async (e: CustomEventMap["nav"]) => {
   }
 
   await renderLocalGraph()
+  if (slug === "graph") {
+    // 1. Hide Article content
+    const article = document.querySelector("article")
+    if (article) article.style.display = "none"
+
+    // 2. Force Graph Container Styles
+    const graphOuter = document.querySelector(".graph") as HTMLElement
+    if (graphOuter) {
+      Object.assign(graphOuter.style, {
+        display: "block",
+        position: "fixed",
+        top: "0",
+        left: "0",
+        width: "100vw",
+        height: "100vh",
+        zIndex: "9999",
+        background: "var(--light)",
+      })
+
+      // Hide local graph parts just in case
+      const h3 = graphOuter.querySelector("h3")
+      if (h3) h3.style.display = "none"
+      const localOuter = graphOuter.querySelector(".graph-outer") as HTMLElement
+      if (localOuter) localOuter.style.display = "none"
+
+      // Show Global parts
+      const globalOuter = graphOuter.querySelector(".global-graph-outer") as HTMLElement
+      if (globalOuter) {
+        Object.assign(globalOuter.style, {
+          display: "block",
+          position: "absolute", // Changed from fixed to absolute relative to .graph
+          top: "0",
+          left: "0",
+          width: "100%",
+          height: "100%",
+        })
+      }
+
+      const globalContainer = graphOuter.querySelector(".global-graph-container") as HTMLElement
+      if (globalContainer) {
+        globalContainer.style.display = "block"
+        globalContainer.style.width = "100%"
+        globalContainer.style.height = "100%"
+
+        // 3. Wait for dimensions before rendering
+        if (globalContainer.offsetWidth > 0) {
+          await renderGlobalGraph()
+        } else {
+          const observer = new ResizeObserver(async () => {
+            if (globalContainer.offsetWidth > 0) {
+              await renderGlobalGraph()
+              observer.disconnect()
+            }
+          })
+          observer.observe(globalContainer)
+        }
+      }
+    }
+  }
   const handleThemeChange = () => {
     void renderLocalGraph()
   }

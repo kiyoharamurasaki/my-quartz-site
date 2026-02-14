@@ -61,7 +61,8 @@ export default ((opts?: Partial<BreadcrumbOptions>) => {
     const crumbs: CrumbData[] = pathNodes.map((node, idx) => {
       const crumb = formatCrumb(node.displayName, fileData.slug!, simplifySlug(node.slug))
       if (idx === 0) {
-        crumb.displayName = options.rootName
+        const indexFile = allFiles.find((f) => f.slug === "index")
+        crumb.displayName = indexFile?.frontmatter?.title ?? options.rootName
       }
 
       // For last node (current page), set empty path

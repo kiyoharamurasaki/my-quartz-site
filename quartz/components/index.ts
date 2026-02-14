@@ -13,8 +13,11 @@ import TableOfContents from "./TableOfContents"
 import Explorer from "./Explorer"
 import TagList from "./TagList"
 import Graph from "./Graph"
+import GraphLink from "./GraphLink"
+import CollapsibleGraph from "./CollapsibleGraph"
 import Backlinks from "./Backlinks"
 import Search from "./Search"
+import SidebarToggle from "./SidebarToggle"
 import Footer from "./Footer"
 import DesktopOnly from "./DesktopOnly"
 import MobileOnly from "./MobileOnly"
@@ -39,8 +42,11 @@ export {
   Explorer,
   TagList,
   Graph,
+  GraphLink,
+  CollapsibleGraph,
   Backlinks,
   Search,
+  SidebarToggle,
   Footer,
   DesktopOnly,
   MobileOnly,

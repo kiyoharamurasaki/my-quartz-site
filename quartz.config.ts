@@ -8,14 +8,14 @@ import * as Plugin from "./quartz/plugins"
  */
 const config: QuartzConfig = {
   configuration: {
-    pageTitle: "Echo Request",
+    pageTitle: "CQ",
     pageTitleSuffix: "",
     enableSPA: true,
     enablePopovers: true,
     analytics: {
       provider: "plausible",
     },
-    locale: "en-US",
+    locale: "ja-JP",
     baseUrl: "kiyoharamurasaki.github.io/my-quartz-site",
     ignorePatterns: ["private", "templates", ".obsidian"],
     defaultDateType: "modified",
@@ -23,32 +23,32 @@ const config: QuartzConfig = {
       fontOrigin: "googleFonts",
       cdnCaching: true,
       typography: {
-        header: "IBM Plex Sans JP",
-        body: "IBM Plex Sans JP",
+        header: "Roboto",
+        body: "Roboto",
         code: "IBM Plex Mono",
       },
       colors: {
         lightMode: {
-          light: "#faf8f8",
-          lightgray: "#e5e5e5",
-          gray: "#b8b8b8",
-          darkgray: "#666666", // Grayish body text
-          dark: "#333333",    // Dark gray headers
-          secondary: "#5c6b7f", // Muted slate blue
-          tertiary: "#9ca3af",
-          highlight: "rgba(143, 159, 169, 0.15)",
-          textHighlight: "#fff23688",
+          light: "#121212",
+          lightgray: "#2b2b2b",
+          gray: "#E0E0E0",
+          darkgray: "#E0E0E0",
+          dark: "#E0E0E0",
+          secondary: "#BB86FC",
+          tertiary: "#9333EA",
+          highlight: "rgba(187, 134, 252, 0.15)",
+          textHighlight: "#BB86FC88",
         },
         darkMode: {
-          light: "#161618",
-          lightgray: "#393639",
-          gray: "#646464",
-          darkgray: "#a0a0a0", // Lighter gray for dark mode body
-          dark: "#d4d4d4",     // Light gray for dark mode headers
-          secondary: "#7b97aa",
-          tertiary: "#84a59d",
-          highlight: "rgba(143, 159, 169, 0.15)",
-          textHighlight: "#b3aa0288",
+          light: "#121212",
+          lightgray: "#2b2b2b",
+          gray: "#E0E0E0",
+          darkgray: "#E0E0E0",
+          dark: "#E0E0E0",
+          secondary: "#BB86FC",
+          tertiary: "#9333EA",
+          highlight: "rgba(187, 134, 252, 0.15)",
+          textHighlight: "#BB86FC88",
         },
       },
     },
@@ -61,7 +61,7 @@ const config: QuartzConfig = {
       }),
       Plugin.SyntaxHighlighting({
         theme: {
-          light: "github-light",
+          light: "github-dark",
           dark: "github-dark",
         },
         keepBackground: false,

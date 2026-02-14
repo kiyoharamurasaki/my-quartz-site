@@ -1,58 +1,132 @@
 @use "./base.scss";
 
-// Clean, minimal design tweaks
+// === Site Title with Subtitle ===
+.page-title {
+  &::after {
+    content: "seek you...";
+    display: block;
+    font-size: 0.7rem;
+    font-weight: 300;
+    opacity: 0.35;
+    letter-spacing: 0.12em;
+    margin-top: 0.1rem;
+    font-style: italic;
+  }
+}
 
-// Typography Overrides
+// === Obsidian-like Clean Links ===
+a.internal {
+  text-decoration: none;
+  color: var(--secondary);
+  transition: all 0.2s ease;
+
+  &:hover {
+    text-decoration: underline;
+    text-decoration-color: var(--secondary);
+    color: var(--secondary);
+  }
+}
+
+// === Right Sidebar: Slide-in Overlay (non-index pages) ===
+body:not([data-slug="index"]) {
+  .right.sidebar {
+    position: fixed !important;
+    right: 0;
+    top: 0;
+    height: 100vh;
+    width: 320px;
+    background: var(--light);
+    border-left: 1px solid var(--lightgray);
+    transform: translateX(100%);
+    transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    z-index: 150;
+    padding: 2rem !important;
+    overflow-y: auto;
+    box-sizing: border-box;
+
+    &.sidebar-open {
+      transform: translateX(0);
+      box-shadow: -8px 0 32px rgba(0, 0, 0, 0.4);
+    }
+  }
+}
+
+// === Index Page: Pinned Note + Inline Graph ===
+body[data-slug="index"] {
+  // Hide article title & meta on index (CQ is in the page title)
+  .article-title,
+  .content-meta,
+  .tags {
+    display: none;
+  }
+
+  // Hide right sidebar entirely on index
+  .right.sidebar {
+    display: none !important;
+  }
+
+  // Style the inline graph (in afterBody)
+  .page-footer .graph {
+    margin-top: 2rem;
+    border-top: 1px solid var(--lightgray);
+    padding-top: 1.5rem;
+
+    h3 {
+      font-size: 0.85rem;
+      opacity: 0.5;
+      font-weight: 400;
+      margin-bottom: 0.5rem;
+    }
+
+    .graph-outer {
+      height: 60vh;
+      border-radius: 8px;
+      border-color: var(--lightgray);
+    }
+
+    // Hide global graph button on index (local graph with depth=-1 already shows all)
+    .global-graph-icon {
+      display: none;
+    }
+  }
+}
+
+// === General Obsidian Aesthetic ===
 body {
-  font-family: "IBM Plex Sans JP", sans-serif;
-  font-weight: 200; // Using 200 (Extra Light) as 100 can be too thin for body text validation
+  font-family: var(--bodyFont);
   color: var(--darkgray);
 }
 
-// Ensure titles are bolder
 h1,
 h2,
 h3,
 h4,
 h5,
 h6 {
-  font-weight: 600;
+  font-family: var(--headerFont);
+  font-weight: 500;
   color: var(--dark);
 }
 
-// Ensure the page title is prominent
-h1.article-title {
-  font-weight: 700;
-  letter-spacing: -0.02em;
-}
-
-// Remove borders from the graph view for a cleaner look
-.graph {
+// Subtle dividers
+hr {
   border: none;
-  box-shadow: none;
+  height: 1px;
+  background: var(--lightgray);
+  opacity: 0.5;
 }
 
-// Make the sidebar cleaner, if borders exist in base theme
-.left {
-  border-right: none;
+// Clean footer
+footer {
+  opacity: 0.4;
+  font-size: 0.8rem;
 }
 
-.right {
-  border-left: none;
-}
-
-// Adjust link colors to be subtle until hovered
-a.internal {
-  text-decoration-color: var(--lightgray);
-  transition: all 0.2s ease;
+// Button base hover
+button {
+  transition: filter 0.2s ease;
 
   &:hover {
-    text-decoration-color: var(--secondary);
-    background-color: var(--highlight);
+    filter: brightness(1.1);
   }
-}
-
-// Code block polish
-code {
-  font-size: 0.9em;
 }

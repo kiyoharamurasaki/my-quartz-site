@@ -16,53 +16,39 @@ export const sharedPageComponents: SharedLayout = {
 
 // components for pages that display a single page (e.g. a single note)
 export const defaultContentPageLayout: PageLayout = {
-  beforeBody: [
+  beforeBody: [Component.ArticleTitle(), Component.ContentMeta(), Component.TagList()],
+  header: [Component.PageTitle()],
+  afterBody: [
+    Component.SidebarToggle(),
     Component.ConditionalRender({
-      component: Component.Breadcrumbs(),
-      condition: (page) => page.fileData.slug !== "index",
-    }),
-    Component.ArticleTitle(),
-    Component.ContentMeta(),
-    Component.TagList(),
-  ],
-  left: [
-    Component.PageTitle(),
-    Component.MobileOnly(Component.Spacer()),
-    Component.Flex({
-      components: [
-        {
-          Component: Component.Search(),
-          grow: true,
+      component: Component.Graph({
+        localGraph: {
+          drag: true,
+          zoom: true,
+          depth: -1,
+          scale: 0.9,
+          repelForce: 0.5,
+          centerForce: 0.3,
+          linkDistance: 30,
+          fontSize: 0.6,
+          opacityScale: 1,
+          showTags: true,
+          removeTags: [],
+          focusOnHover: true,
+          enableRadial: true,
         },
-        { Component: Component.Darkmode() },
-        { Component: Component.ReaderMode() },
-      ],
+      }),
+      condition: (page) => page.fileData.slug === "index",
     }),
-    Component.Explorer(),
   ],
-  right: [
-    Component.Graph(),
-    Component.DesktopOnly(Component.TableOfContents()),
-    Component.Backlinks(),
-  ],
+  left: [],
+  right: [Component.Graph(), Component.Backlinks()],
 }
 
-// components for pages that display lists of pages  (e.g. tags or folders)
 export const defaultListPageLayout: PageLayout = {
-  beforeBody: [Component.Breadcrumbs(), Component.ArticleTitle(), Component.ContentMeta()],
-  left: [
-    Component.PageTitle(),
-    Component.MobileOnly(Component.Spacer()),
-    Component.Flex({
-      components: [
-        {
-          Component: Component.Search(),
-          grow: true,
-        },
-        { Component: Component.Darkmode() },
-      ],
-    }),
-    Component.Explorer(),
-  ],
+  beforeBody: [Component.ArticleTitle(), Component.ContentMeta()],
+  header: [Component.PageTitle()],
+  afterBody: [],
+  left: [],
   right: [],
 }

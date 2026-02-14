@@ -1,15 +1,9 @@
 ---
-title: Home
-created: 2026-02-12
-publish: true
-public_name:
+title: CQ
 tags:
   - public
-aliases: []
 ---
 
-# Home
+[[Hello World]]
 
-Welcome to my Quartz site.
-
-- [[Hello World]]
+[[Why]]
