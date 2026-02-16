@@ -20,15 +20,14 @@ export default ((opts?: any) => {
                             alignItems: "center",
                             gap: "0.5rem",
                             fontWeight: "bold",
-                            color: "var(--lightgray)",
+                            color: "var(--dark)",
                         }}
                     >
-                        <span>{i18n(props.cfg.locale).components.backlinks.title}</span>
                         <span class="fold-icon">
                             <svg
                                 xmlns="http://www.w3.org/2000/svg"
-                                width="12"
-                                height="12"
+                                width="18"
+                                height="18"
                                 viewBox="0 0 24 24"
                                 fill="none"
                                 stroke="currentColor"
@@ -40,6 +39,7 @@ export default ((opts?: any) => {
                                 <polyline points="9 18 15 12 9 6"></polyline>
                             </svg>
                         </span>
+                        <span>{i18n(props.cfg.locale).components.backlinks.title}</span>
                     </summary>
                     {backlinksContent}
                 </details>
@@ -55,10 +55,11 @@ export default ((opts?: any) => {
   }
   .collapsible-backlinks summary {
     user-select: none; 
-    opacity: 0.8;
+    opacity: 1;
   }
   .collapsible-backlinks summary:hover {
-    opacity: 1;
+    opacity: 0.8;
+    color: var(--secondary);
   }
   .collapsible-backlinks .backlinks {
     margin-top: 1rem;
