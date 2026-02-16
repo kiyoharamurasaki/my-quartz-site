@@ -64,6 +64,9 @@ export default ((opts?: any) => {
   .collapsible-backlinks .backlinks {
     margin-top: 1rem;
   }
+  .collapsible-backlinks .backlinks h3 {
+    display: none;
+  }
   ${BacklinksComponent.css ?? ""}
   `
 

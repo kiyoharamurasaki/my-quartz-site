@@ -17,13 +17,29 @@
 // === Obsidian-like Clean Links ===
 a.internal {
   text-decoration: none;
+  background-color: transparent;
   color: var(--secondary);
   transition: all 0.2s ease;
+  font-weight: 600; // Match standard link weight
 
   &:hover {
-    text-decoration: underline;
-    text-decoration-color: var(--secondary);
-    color: var(--secondary);
+    text-decoration: none;
+    color: var(--tertiary); // Darker color on hover
+    background-color: var(--highlight);
+  }
+
+  // Unresolved links (phantom/broken)
+  &.broken {
+    font-weight: normal;
+    color: var(--gray);
+    background-color: transparent;
+    font-style: normal;
+
+    &:hover {
+      text-decoration: none;
+      color: var(--darkgray);
+      background-color: transparent;
+    }
   }
 }
 
@@ -53,6 +69,7 @@ body:not([data-slug="index"]) {
 
 // === Index Page: Pinned Note + Inline Graph ===
 body[data-slug="index"] {
+
   // Hide article title & meta on index (CQ is in the page title)
   .article-title,
   .content-meta,
