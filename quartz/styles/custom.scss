@@ -21,12 +21,11 @@ a.internal {
   background-color: transparent;
   color: var(--secondary);
   transition: all 0.2s ease;
-  font-weight: 400;
+  font-weight: 300;
 
   &:hover {
     text-decoration: none;
     color: var(--tertiary);
-    background-color: var(--highlight);
   }
 
   // Unresolved links (phantom/broken)
@@ -138,7 +137,7 @@ h4,
 h5,
 h6 {
   font-family: var(--headerFont);
-  font-weight: 400;
+  font-weight: 300;
   color: var(--dark);
 }
 

@@ -21,54 +21,35 @@ export default (() => {
 
     return (
       <div class="collapsible-backlinks">
-        <details>
-          <summary>
-            <span class="fold-icon">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                width="18"
-                height="18"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                stroke-width="2"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-              >
-                <polyline points="9 18 15 12 9 6"></polyline>
-              </svg>
-            </span>
-            <span>
-              {i18n(cfg.locale).components.backlinks.title}
-              <span class="backlinks-count">({backlinkFiles.length})</span>
-            </span>
-          </summary>
-          <ul class="backlinks-list">
-            {visibleBacklinks.map((f) => (
-              <li>
-                <a href={resolveRelative(fileData.slug!, f.slug!)} class="internal">
-                  {f.frontmatter?.title}
-                </a>
-              </li>
-            ))}
-          </ul>
-          {hasMore && (
-            <div class="backlinks-more-wrapper">
-              <button class="backlinks-more-btn" type="button">
-                more ({hiddenBacklinks.length})
-              </button>
-              <ul class="backlinks-list backlinks-hidden-list">
-                {hiddenBacklinks.map((f) => (
-                  <li>
-                    <a href={resolveRelative(fileData.slug!, f.slug!)} class="internal">
-                      {f.frontmatter?.title}
-                    </a>
-                  </li>
-                ))}
-              </ul>
-            </div>
-          )}
-        </details>
+        <h3 class="backlinks-title">
+          {i18n(cfg.locale).components.backlinks.title}
+          <span class="backlinks-count">({backlinkFiles.length})</span>
+        </h3>
+        <ul class="backlinks-list">
+          {visibleBacklinks.map((f) => (
+            <li>
+              <a href={resolveRelative(fileData.slug!, f.slug!)} class="internal">
+                {f.frontmatter?.title}
+              </a>
+            </li>
+          ))}
+        </ul>
+        {hasMore && (
+          <div class="backlinks-more-wrapper">
+            <button class="backlinks-more-btn" type="button">
+              more ({hiddenBacklinks.length})
+            </button>
+            <ul class="backlinks-list backlinks-hidden-list">
+              {hiddenBacklinks.map((f) => (
+                <li>
+                  <a href={resolveRelative(fileData.slug!, f.slug!)} class="internal">
+                    {f.frontmatter?.title}
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </div>
+        )}
       </div>
     )
   }
@@ -79,33 +60,23 @@ export default (() => {
     padding-top: 1rem;
     border-top: 1px solid var(--lightgray);
   }
-  .collapsible-backlinks summary {
-    cursor: pointer;
-    list-style: none;
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
-    font-weight: 500;
+  .backlinks-title {
+    font-size: 0.9rem;
+    font-weight: 400;
     color: var(--dark);
-    user-select: none;
-  }
-  .collapsible-backlinks summary::-webkit-details-marker {
-    display: none;
-  }
-  .collapsible-backlinks summary:hover {
-    opacity: 0.8;
-    color: var(--secondary);
+    opacity: 0.7;
+    margin: 0 0 0.5rem 0;
   }
   .backlinks-count {
     font-size: 0.8rem;
     opacity: 0.5;
     margin-left: 0.3rem;
-    font-weight: 400;
+    font-weight: 300;
   }
   .backlinks-list {
     list-style: none;
     padding: 0;
-    margin: 0.5rem 0 0 0;
+    margin: 0;
   }
   .backlinks-list li {
     padding: 0.2rem 0;
@@ -141,24 +112,6 @@ export default (() => {
 
   CollapsibleBacklinks.afterDOMLoaded = `
     document.addEventListener('click', (e) => {
-      // Fold icon rotation
-      const details = document.querySelector('.collapsible-backlinks details');
-      if (details) {
-        const icon = details.querySelector('.fold-icon svg');
-        const updateIcon = () => {
-          if (details.open) {
-            icon.style.transform = 'rotate(90deg)';
-            icon.style.transition = 'transform 0.2s ease';
-          } else {
-            icon.style.transform = 'rotate(0deg)';
-            icon.style.transition = 'transform 0.2s ease';
-          }
-        };
-        details.addEventListener('toggle', updateIcon);
-        updateIcon();
-      }
-
-      // "more" button
       const moreBtn = e.target.closest('.backlinks-more-btn');
       if (moreBtn) {
         const wrapper = moreBtn.closest('.backlinks-more-wrapper');

@@ -97,9 +97,9 @@ a {
 
   &.internal {
     text-decoration: none;
-    background-color: var(--highlight);
-    padding: 0 0.1rem;
-    border-radius: 5px;
+    background-color: transparent;
+    padding: 0;
+    border-radius: 0;
     line-height: 1.4rem;
 
     &.broken {
@@ -387,7 +387,7 @@ h6,
 thead {
   font-family: var(--headerFont);
   color: var(--dark);
-  font-weight: 500;
+  font-weight: 400;
   margin-bottom: 0;
 
   article>&>a[role="anchor"] {
