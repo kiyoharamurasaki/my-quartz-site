@@ -1,8 +1,7 @@
 import { FullSlug, resolveRelative } from "../util/path"
 import { QuartzComponent, QuartzComponentConstructor, QuartzComponentProps } from "./types"
 import { classNames } from "../util/lang"
-
-const HIDDEN_TAGS = ["public"]
+import { HIDDEN_TAGS } from "../hiddenTags"
 
 const TagList: QuartzComponent = ({ fileData, displayClass }: QuartzComponentProps) => {
   const tags = fileData.frontmatter?.tags?.filter((tag) => !HIDDEN_TAGS.includes(tag))

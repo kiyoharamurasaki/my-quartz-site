@@ -1,5 +1,6 @@
 import { PageLayout, SharedLayout } from "./quartz/cfg"
 import * as Component from "./quartz/components"
+import { HIDDEN_TAGS } from "./quartz/hiddenTags"
 
 // components shared across all pages
 export const sharedPageComponents: SharedLayout = {
@@ -31,7 +32,7 @@ export const defaultContentPageLayout: PageLayout = {
         linkDistance: 30, // how long should the links be by default?
         fontSize: 0.6, // what size should the node labels be?
         opacityScale: 1, // how quickly do we fade out the labels when zooming out?
-        removeTags: ["public"],
+        removeTags: HIDDEN_TAGS,
         showTags: true,
       },
       globalGraph: {
@@ -44,7 +45,7 @@ export const defaultContentPageLayout: PageLayout = {
         linkDistance: 30,
         fontSize: 0.6,
         opacityScale: 1,
-        removeTags: ["public"], // what tags to remove from the graph
+        removeTags: HIDDEN_TAGS, // what tags to remove from the graph
         showTags: true, // whether to show tags in the graph
       },
     }),
