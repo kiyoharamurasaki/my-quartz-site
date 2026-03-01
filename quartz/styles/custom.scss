@@ -1,4 +1,5 @@
 @use "./base.scss";
+@use "./variables.scss" as *;
 
 // === Site Title with Subtitle ===
 .page-title {
@@ -20,11 +21,11 @@ a.internal {
   background-color: transparent;
   color: var(--secondary);
   transition: all 0.2s ease;
-  font-weight: 600; // Match standard link weight
+  font-weight: 400;
 
   &:hover {
     text-decoration: none;
-    color: var(--tertiary); // Darker color on hover
+    color: var(--tertiary);
     background-color: var(--highlight);
   }
 
@@ -64,6 +65,12 @@ body:not([data-slug="index"]) {
       transform: translateX(0);
       box-shadow: -8px 0 32px rgba(0, 0, 0, 0.4);
     }
+
+    // Mobile: full-width sidebar
+    @media all and ($mobile) {
+      width: 100vw;
+      padding: 1.5rem !important;
+    }
   }
 }
 
@@ -99,6 +106,10 @@ body[data-slug="index"] {
       height: 60vh;
       border-radius: 8px;
       border-color: var(--lightgray);
+
+      @media all and ($mobile) {
+        height: 40vh;
+      }
     }
 
     // Hide global graph button on index (local graph with depth=-1 already shows all)
@@ -106,6 +117,12 @@ body[data-slug="index"] {
       display: none;
     }
   }
+}
+
+// === Responsive: prevent horizontal overflow ===
+html,
+body {
+  overflow-x: hidden;
 }
 
 // === General Obsidian Aesthetic ===
@@ -121,8 +138,23 @@ h4,
 h5,
 h6 {
   font-family: var(--headerFont);
-  font-weight: 500;
+  font-weight: 400;
   color: var(--dark);
+}
+
+// === Mobile typography adjustments ===
+@media all and ($mobile) {
+  .page-title::after {
+    font-size: 0.6rem;
+  }
+
+  h1 {
+    font-size: 1.5rem;
+  }
+
+  h2 {
+    font-size: 1.2rem;
+  }
 }
 
 // Subtle dividers
