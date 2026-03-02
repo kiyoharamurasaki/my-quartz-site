@@ -1,17 +1,41 @@
-# Quartz v4
+# CQ — Quartz サイト
 
-> “[One] who works with the door open gets all kinds of interruptions, but [they] also occasionally gets clues as to what the world is and what might be important.” — Richard Hamming
+清原紫の Quartz サイト。
 
-Quartz is a set of tools that helps you publish your [digital garden](https://jzhao.xyz/posts/networked-thought) and notes as a website for free.
+## セットアップ
 
-🔗 Read the documentation and get started: https://quartz.jzhao.xyz/
+```sh
+npm ci
+npx quartz build --serve   # ローカルプレビュー (http://localhost:8080)
+```
 
-[Join the Discord Community](https://discord.gg/cRFFHYye7t)
+## 公開設定
 
-## Sponsors
+### 記事の公開
 
-<p align="center">
-  <a href="https://github.com/sponsors/jackyzha0">
-    <img src="https://cdn.jsdelivr.net/gh/jackyzha0/jackyzha0/sponsorkit/sponsors.svg" />
-  </a>
-</p>
+フロントマターに `publish: true` を設定した記事のみビルド対象になる。
+
+```yaml
+---
+publish: true
+tags:
+  - public
+---
+```
+
+`publish: true` がない記事はビルド時に除外される（`quartz/plugins/filters/draft.ts`）。
+
+### 非公開タグ（Hidden Tags）
+
+`quartz/hiddenTags.ts` で管理。ここに追加したタグは **TagList**（記事下のタグ表示）と **グラフビュー** から自動的に除外される。
+
+```ts
+// quartz/hiddenTags.ts
+export const HIDDEN_TAGS: string[] = ["public"]
+```
+
+内部的に Obsidian で整理用に使うが、サイト上では非表示にしたいタグをここに追加する。
+
+## デプロイ
+
+`main` ブランチに push すると GitHub Actions が自動ビルド＆デプロイ。
