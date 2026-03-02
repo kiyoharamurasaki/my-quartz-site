@@ -1,10 +1,7 @@
----
-publish: true
----
 
 # Hello World
 ---
-[[清原紫-pub|清原紫]]の[[Quartz]]へようこそ。
+[[清原紫-pub|清原紫]]の[[Quartz-pub]]へようこそ。
 
 [[2026-02-18-pub|2026-02-18]]
 

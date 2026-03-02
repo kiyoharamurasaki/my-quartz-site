@@ -1,5 +1,5 @@
 ---
-created: <% tp.date.now("YYYY-MM-DD") %>
+created: 2026-03-02
 publish: true
 tags:
   - public
