@@ -7,7 +7,7 @@
 html {
   scroll-behavior: smooth;
   text-size-adjust: none;
-  overflow-x: hidden;
+  overflow-x: clip;
   width: 100vw;
 
   @media all and ($mobile) {
@@ -252,7 +252,6 @@ a {
       position: initial;
       height: unset;
       padding: 0;
-      padding-top: 2rem;
 
       @media all and ($mobile) {
         gap: 0;
@@ -296,7 +295,7 @@ a {
 
     & .page-header {
       grid-area: grid-header;
-      margin: $topSpacing 0 0 0;
+      margin: 0;
 
       @media all and ($mobile) {
         margin-top: 0;

@@ -263,14 +263,16 @@ export function renderPage(
     <html lang={lang} dir={direction}>
       <Head {...componentData} />
       <body data-slug={slug}>
-        <div id="quartz-root" class="page">
-          <div class="site-header">
+        <div class="site-header">
+          <div class="site-header-inner">
             <Header {...componentData}>
               {header.map((HeaderComponent) => (
                 <HeaderComponent {...componentData} />
               ))}
             </Header>
           </div>
+        </div>
+        <div id="quartz-root" class="page">
           <Body {...componentData}>
             {LeftComponent}
             <div class="center">

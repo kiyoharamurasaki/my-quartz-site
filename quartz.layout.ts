@@ -17,7 +17,7 @@ export const sharedPageComponents: SharedLayout = {
 
 // components for pages that display a single page (e.g. a single note)
 export const defaultContentPageLayout: PageLayout = {
-  beforeBody: [Component.ArticleTitle(), Component.ContentMeta(), Component.TagList()],
+  beforeBody: [Component.ArticleTitle(), Component.ContentMeta({ showReadingTime: false }), Component.TagList()],
   header: [Component.PageTitle()],
   afterBody: [
     Component.CollapsibleBacklinks(),
@@ -55,7 +55,7 @@ export const defaultContentPageLayout: PageLayout = {
 }
 
 export const defaultListPageLayout: PageLayout = {
-  beforeBody: [Component.ArticleTitle(), Component.ContentMeta()],
+  beforeBody: [Component.ArticleTitle(), Component.ContentMeta({ showReadingTime: false })],
   header: [Component.PageTitle()],
   afterBody: [],
   left: [],

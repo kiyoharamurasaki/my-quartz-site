@@ -6,8 +6,8 @@
   position: sticky;
   top: 0;
   z-index: 100;
+  width: 100%;
   background: var(--light);
-  padding: 0.8rem 1.5rem;
   border-bottom: 1px solid transparent;
   transition: border-color 0.3s ease, backdrop-filter 0.3s ease;
 
@@ -16,6 +16,13 @@
     background: color-mix(in srgb, var(--light) 85%, transparent);
     backdrop-filter: blur(12px);
     -webkit-backdrop-filter: blur(12px);
+  }
+
+  .site-header-inner {
+    max-width: 750px;
+    margin: 0 auto;
+    padding: 0.8rem 1.5rem;
+    text-align: left;
   }
 
   header {
@@ -35,15 +42,21 @@
     letter-spacing: 0.12em;
     margin-top: 0.1rem;
     font-style: italic;
-    transition: opacity 0.4s ease, max-height 0.4s ease;
+    // Smoke-like fade: opacity + blur + upward drift
+    transition: opacity 0.5s ease, max-height 0.4s ease,
+      filter 0.5s ease, transform 0.5s ease;
     max-height: 1.5em;
     overflow: hidden;
+    filter: blur(0);
+    transform: translateY(0);
   }
 
   &.scrolled::after {
     opacity: 0;
     max-height: 0;
     margin-top: 0;
+    filter: blur(4px);
+    transform: translateY(-4px);
   }
 }
 
@@ -153,7 +166,7 @@ body[data-slug="index"] {
 // === Responsive: prevent horizontal overflow ===
 html,
 body {
-  overflow-x: hidden;
+  overflow-x: clip;
 }
 
 // === General Obsidian Aesthetic ===
