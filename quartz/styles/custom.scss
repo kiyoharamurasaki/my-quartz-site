@@ -148,6 +148,16 @@ h6 {
     font-size: 0.9rem;
   }
 
+  // モバイルでの混在テキスト（日英）の改行を自然にする
+  p,
+  li,
+  td,
+  blockquote {
+    text-wrap: auto;
+    word-break: auto-phrase;
+    overflow-wrap: anywhere;
+  }
+
   .page-title::after {
     font-size: 0.6rem;
   }
