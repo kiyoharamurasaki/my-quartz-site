@@ -21,4 +21,20 @@ PageTitle.css = `
 }
 `
 
+PageTitle.afterDOMLoaded = `
+  const title = document.querySelector('.page-title');
+  if (title) {
+    let ticking = false;
+    window.addEventListener('scroll', () => {
+      if (!ticking) {
+        requestAnimationFrame(() => {
+          title.classList.toggle('scrolled', window.scrollY > 30);
+          ticking = false;
+        });
+        ticking = true;
+      }
+    }, { passive: true });
+  }
+`
+
 export default (() => PageTitle) satisfies QuartzComponentConstructor

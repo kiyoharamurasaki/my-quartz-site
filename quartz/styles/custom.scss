@@ -1,6 +1,29 @@
 @use "./base.scss";
 @use "./variables.scss" as *;
 
+// === Sticky Site Header ===
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: var(--light);
+  padding: 0.8rem 1.5rem;
+  border-bottom: 1px solid transparent;
+  transition: border-color 0.3s ease, backdrop-filter 0.3s ease;
+
+  &:has(.page-title.scrolled) {
+    border-bottom-color: var(--lightgray);
+    background: color-mix(in srgb, var(--light) 85%, transparent);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+  }
+
+  header {
+    margin: 0;
+    gap: 0;
+  }
+}
+
 // === Site Title with Subtitle ===
 .page-title {
   &::after {
@@ -12,6 +35,15 @@
     letter-spacing: 0.12em;
     margin-top: 0.1rem;
     font-style: italic;
+    transition: opacity 0.4s ease, max-height 0.4s ease;
+    max-height: 1.5em;
+    overflow: hidden;
+  }
+
+  &.scrolled::after {
+    opacity: 0;
+    max-height: 0;
+    margin-top: 0;
   }
 }
 
@@ -156,6 +188,7 @@ h6 {
     text-wrap: auto;
     word-break: auto-phrase;
     overflow-wrap: anywhere;
+    text-align: justify;
   }
 
   .page-title::after {
@@ -163,11 +196,11 @@ h6 {
   }
 
   h1 {
-    font-size: 1.3rem;
+    font-size: 1.1rem;
   }
 
   h2 {
-    font-size: 1.1rem;
+    font-size: 1rem;
   }
 
   h3 {
