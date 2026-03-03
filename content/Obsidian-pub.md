@@ -6,7 +6,7 @@ tags:
 aliases:
   - Obsidian
 ---
-URL: https://obsidian.md
+[Obsidian](https://obsidian.md)
 
 ObsidianはPKM（Personal Knowledge Management）と呼ばれるツールで、AI連携でよく使われている。けれど、私にとっては[[第二の脳]]。
 基本的にはハイパーリンクでノートをつなぐだけのアプリ。
