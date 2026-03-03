@@ -187,21 +187,21 @@ h6 {
   color: var(--dark);
 }
 
+// === Typography: 日英混在テキストの改行・揃えを自然にする ===
+p,
+li,
+td,
+blockquote {
+  text-wrap: auto;
+  word-break: auto-phrase;
+  overflow-wrap: anywhere;
+  text-align: justify;
+}
+
 // === Mobile typography adjustments ===
 @media all and ($mobile) {
   body {
     font-size: 0.9rem;
-  }
-
-  // モバイルでの混在テキスト（日英）の改行を自然にする
-  p,
-  li,
-  td,
-  blockquote {
-    text-wrap: auto;
-    word-break: auto-phrase;
-    overflow-wrap: anywhere;
-    text-align: justify;
   }
 
   .page-title::after {
