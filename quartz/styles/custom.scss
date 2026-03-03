@@ -21,7 +21,7 @@ a.internal {
   background-color: transparent;
   color: var(--secondary);
   transition: all 0.2s ease;
-  font-weight: 300;
+  font-weight: 200;
 
   &:hover {
     text-decoration: none;
@@ -126,7 +126,8 @@ body {
 
 // === General Obsidian Aesthetic ===
 body {
-  font-family: var(--bodyFont);
+  font-family: -apple-system, BlinkMacSystemFont, "Hiragino Kaku Gothic ProN", "Hiragino Sans", var(--bodyFont);
+  font-weight: 200;
   color: var(--darkgray);
 }
 
@@ -136,23 +137,31 @@ h3,
 h4,
 h5,
 h6 {
-  font-family: var(--headerFont);
+  font-family: -apple-system, BlinkMacSystemFont, "Hiragino Kaku Gothic ProN", "Hiragino Sans", var(--headerFont);
   font-weight: 300;
   color: var(--dark);
 }
 
 // === Mobile typography adjustments ===
 @media all and ($mobile) {
+  body {
+    font-size: 0.9rem;
+  }
+
   .page-title::after {
     font-size: 0.6rem;
   }
 
   h1 {
-    font-size: 1.5rem;
+    font-size: 1.3rem;
   }
 
   h2 {
-    font-size: 1.2rem;
+    font-size: 1.1rem;
+  }
+
+  h3 {
+    font-size: 1rem;
   }
 }
 
